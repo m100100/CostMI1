@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+#hierarchy, #hierarchy * {
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', monospace;
+}
+#hierarchy {
+    float: left;
+    width: 48%;
+    padding: 3px;
+    box-sizing: border-box;
+    text-align: center; /* Center content horizontally */
+}
+
+#tree-container {
+    display: inline-block; /* Allow centering */
+    text-align: left;      /* Keep tree nodes left-aligned inside */
+}
+#right-panel {
+    float: right;
+    width: 48%;
+    margin-left: 2%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 90vh; /* or any height you prefer */
+}
+
+#item-details {
+    min-height: 100px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background: #f9f9f9;
+}
+
+#subitems {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+/* --- Pure CSS Tree Menu style --- */
+.tree ul {
+    padding-top: 20px;
+    position: relative;
+    transition: all 0.5s;
+    padding-left: 0;
+}
+
+.tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+    transition: all 0.5s;
+}
+
+/* Draw connectors */
+.tree li::before, .tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 20px;
+}
+.tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+
+/* Remove connectors for root and only child */
+.tree li:only-child::before, .tree li:only-child::after {
+    display: none;
+}
+.tree li:only-child {
+    padding-top: 0;
+}
+.tree li:first-child::before, .tree li:last-child::after {
+    border: 0 none;
+}
+.tree li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after {
+    border-radius: 5px 0 0 0;
+}
+
+/* Node box */
+.tree span, .tree .caret {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    display: inline-block;
+    border-radius: 5px;
+    transition: all 0.5s;
+    background: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 0;
+}
+
+.tree .caret::before {
+    content: "▶";
+    color: black;
+    display: inline-block;
+    margin-right: 3px;
+}
+.tree .caret-down::before {
+    content: "▼";
+}
+
+/* Hide and show children */
+.nested {
+    display: none;
+}
+.active {
+    display: block;
+}

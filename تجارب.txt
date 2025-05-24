@@ -1,0 +1,5 @@
+
+
+
+node fetchCostData.js
+npx live-server
